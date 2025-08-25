@@ -1,4 +1,4 @@
-package com.rl.habitdot.ui.theme
+package com.rl.habitdot.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

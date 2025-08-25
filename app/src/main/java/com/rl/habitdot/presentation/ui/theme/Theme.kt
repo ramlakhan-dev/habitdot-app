@@ -1,4 +1,4 @@
-package com.rl.habitdot.ui.theme
+package com.rl.habitdot.presentation.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
