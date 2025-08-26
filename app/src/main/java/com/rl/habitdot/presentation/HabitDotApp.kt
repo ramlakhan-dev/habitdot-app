@@ -24,6 +24,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.rl.habitdot.R
 import com.rl.habitdot.domain.model.Habit
 import com.rl.habitdot.presentation.components.BottomSheet
+import com.rl.habitdot.presentation.components.DeleteHabitDialog
 import com.rl.habitdot.presentation.screens.home.Home
 import com.rl.habitdot.presentation.viewmodel.HabitViewModel
 
@@ -35,6 +36,22 @@ fun HabitDotApp() {
     val sheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
     var habitToEdit by remember { mutableStateOf<Habit?>(null) }
+    var showDeleteDialog by remember { mutableStateOf(false) }
+    var habitToDelete by remember { mutableStateOf<Habit?>(null) }
+
+    if (showDeleteDialog && habitToDelete != null) {
+        DeleteHabitDialog(
+            modifier = Modifier
+                .padding(16.dp),
+            onConfirm = {
+                habitViewModel.deleteHabit(habitToDelete!!)
+                showDeleteDialog = false
+            },
+            onDismiss = {
+                showDeleteDialog = false
+            }
+        )
+    }
 
     if (showBottomSheet) {
         ModalBottomSheet(
@@ -89,6 +106,10 @@ fun HabitDotApp() {
             onHabitClick = { habit ->
                 habitToEdit = habit
                 showBottomSheet = true
+            },
+            onHabitLongPress = { habit ->
+                habitToDelete = habit
+                showDeleteDialog = true
             }
         )
     }

@@ -24,7 +24,8 @@ import com.rl.habitdot.presentation.viewmodel.HabitViewModel
 fun Home(
     modifier: Modifier = Modifier,
     habitViewModel: HabitViewModel,
-    onHabitClick: (Habit) -> Unit
+    onHabitClick: (Habit) -> Unit,
+    onHabitLongPress: (Habit) -> Unit
 ) {
 
     val habitList = habitViewModel.allHabits.collectAsState(initial = emptyList()).value
@@ -54,6 +55,9 @@ fun Home(
                     habit = habit,
                     onHabitClick = { habit ->
                         onHabitClick(habit)
+                    },
+                    onHabitLongPress = { habit ->
+                        onHabitLongPress(habit)
                     }
                 )
             }

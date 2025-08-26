@@ -15,4 +15,7 @@
     <string name="no_habits">No habits</string>
     <string name="check">Check</string>
     <string name="notifications">Notifications</string>
+    <string name="delete_habit">Delete Habit</string>
+    <string name="delete_message">Are you sure you want to delete this habit?</string>
+    <string name="delete">Delete</string>
 </resources>

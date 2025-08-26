@@ -33,7 +33,8 @@ import com.rl.habitdot.domain.model.Habit
 fun HabitItem(
     modifier: Modifier = Modifier,
     habit: Habit,
-    onHabitClick: (Habit) -> Unit
+    onHabitClick: (Habit) -> Unit,
+    onHabitLongPress: (Habit) -> Unit
 ) {
 
     Card(
@@ -42,6 +43,9 @@ fun HabitItem(
                 detectTapGestures(
                     onTap = {
                         onHabitClick(habit)
+                    },
+                    onLongPress = {
+                        onHabitLongPress(habit)
                     }
                 )
             },

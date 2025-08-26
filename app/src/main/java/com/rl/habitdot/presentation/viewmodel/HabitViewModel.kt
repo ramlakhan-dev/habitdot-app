@@ -26,4 +26,10 @@ class HabitViewModel @Inject constructor(
             habitUseCase.updateHabit(habit)
         }
     }
+
+    fun deleteHabit(habit: Habit) {
+        viewModelScope.launch {
+            habitUseCase.deleteHabit(habit)
+        }
+    }
 }
