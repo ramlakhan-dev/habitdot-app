@@ -82,7 +82,8 @@ fun HabitDotApp() {
         }
     ) { innerPadding ->
         Home(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
+            habitViewModel = habitViewModel
         )
     }
 }
