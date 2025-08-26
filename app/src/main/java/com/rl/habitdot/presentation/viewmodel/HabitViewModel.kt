@@ -20,4 +20,10 @@ class HabitViewModel @Inject constructor(
             habitUseCase.insertHabit(habit)
         }
     }
+
+    fun updateHabit(habit: Habit) {
+        viewModelScope.launch {
+            habitUseCase.updateHabit(habit)
+        }
+    }
 }

@@ -16,13 +16,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.rl.habitdot.R
+import com.rl.habitdot.domain.model.Habit
 import com.rl.habitdot.presentation.components.HabitItem
 import com.rl.habitdot.presentation.viewmodel.HabitViewModel
 
 @Composable
 fun Home(
     modifier: Modifier = Modifier,
-    habitViewModel: HabitViewModel
+    habitViewModel: HabitViewModel,
+    onHabitClick: (Habit) -> Unit
 ) {
 
     val habitList = habitViewModel.allHabits.collectAsState(initial = emptyList()).value
@@ -49,7 +51,10 @@ fun Home(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp,4.dp),
-                    habit = habit
+                    habit = habit,
+                    onHabitClick = { habit ->
+                        onHabitClick(habit)
+                    }
                 )
             }
 

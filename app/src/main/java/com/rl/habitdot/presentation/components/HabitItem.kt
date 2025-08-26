@@ -1,8 +1,7 @@
 package com.rl.habitdot.presentation.components
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,21 +22,29 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.rl.habitdot.R
 import com.rl.habitdot.domain.model.Habit
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HabitItem(
     modifier: Modifier = Modifier,
-    habit: Habit
+    habit: Habit,
+    onHabitClick: (Habit) -> Unit
 ) {
 
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onTap = {
+                        onHabitClick(habit)
+                    }
+                )
+            },
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
         Column(

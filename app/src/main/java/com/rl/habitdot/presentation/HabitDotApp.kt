@@ -49,6 +49,8 @@ fun HabitDotApp() {
                 onSave = { habit ->
                     if (habit.id == 0) {
                         habitViewModel.addHabit(habit)
+                    } else {
+                        habitViewModel.updateHabit(habit)
                     }
                     showBottomSheet = false
                 }
@@ -83,7 +85,11 @@ fun HabitDotApp() {
     ) { innerPadding ->
         Home(
             modifier = Modifier.padding(innerPadding),
-            habitViewModel = habitViewModel
+            habitViewModel = habitViewModel,
+            onHabitClick = { habit ->
+                habitToEdit = habit
+                showBottomSheet = true
+            }
         )
     }
 }

@@ -146,7 +146,13 @@ fun BottomSheet(
         Button(
             onClick = {
                 if (name.isNotEmpty()) {
-                    val habit = Habit(
+                    val habit = habitToEdit?.copy(
+                        name = name,
+                        description = description.ifEmpty { null },
+                        shouldNotify = shouldNotify,
+                        notifyTime = if (shouldNotify) notifyTime else null
+                    ) ?:
+                    Habit(
                         name = name,
                         description = description.ifEmpty { null },
                         shouldNotify = shouldNotify,
